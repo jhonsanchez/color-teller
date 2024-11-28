@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blue
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: color-teller
+      env: blue
+  template:
+    metadata:
+      labels:
+        app: color-teller
+        env: blue
+    spec:
+      containers:
+        - name: color-teller
+          image: spring-color-teller:1.0.0
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
